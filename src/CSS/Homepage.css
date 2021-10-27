@@ -1,0 +1,15 @@
+.homepage {
+  background-color: var(--Background);
+  min-height: 100vh;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.homepage-title {
+  text-align: center;
+  color: var(--MainColor);
+  font-size: 3.5rem;
+}

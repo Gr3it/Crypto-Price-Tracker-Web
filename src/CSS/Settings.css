@@ -1,0 +1,56 @@
+.settings-container {
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.settings-svg-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: var(--ContainerColor);
+  cursor: pointer;
+}
+
+.settings-svg {
+  width: 1.25em;
+  height: 1.25em;
+  color: var(--MainColor);
+  transition: transform 0.5s;
+}
+
+.settings-svg-container:hover .settings-svg {
+  transform: rotate(-90deg);
+}
+
+.settings-option-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 0.5rem;
+  transform: scale(0);
+  transform-origin: top right;
+  transition: transform 0.3s;
+}
+
+.settings-option {
+  color: var(--MainColor);
+  font-weight: 500;
+  padding: 0.5em 0.75em;
+  font-size: 0.75em;
+  border-radius: 10rem;
+  background-color: var(--ContainerColor);
+}
+
+.settings-svg-container:hover + .settings-option-container {
+  transform: scale(1);
+}
