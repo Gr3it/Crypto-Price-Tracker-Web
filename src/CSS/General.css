@@ -27,6 +27,13 @@ body {
   align-items: center;
 }
 
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--Background);
+}
+
 .container {
   width: 100vw;
   padding-right: 10vw;

@@ -1,15 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "../CSS/Settings.css";
 
-function Settings() {
+function Settings({
+  currency,
+  setCurrency,
+  theme,
+  setTheme,
+  setCurrencySymbol,
+}) {
+  const [showMenu, setShowMenu] = useState(false);
+
+  const resetMenu = () => {
+    document
+      .querySelectorAll(".settings-option-container")
+      .forEach((element) => {
+        element.classList.add("settings-scale0");
+      });
+    document
+      .getElementById("settings-option-name")
+      .classList.remove("settings-scale0");
+  };
   return (
     <div className="settings-container">
-      <div className="settings-svg-container">
+      <div
+        className="settings-svg-container"
+        onClick={() => {
+          if (showMenu === false) {
+            resetMenu();
+          }
+          setShowMenu(!showMenu);
+        }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
-          class="settings-svg"
+          className="settings-svg"
         >
           <path
             fill="currentColor"
@@ -17,9 +43,117 @@ function Settings() {
           ></path>
         </svg>
       </div>
-      <div className="settings-option-container">
-        <div className="settings-option">Currency: USD</div>
-        <div className="settings-option">Theme: Dark</div>
+      <div
+        className={
+          showMenu
+            ? "settings-menu-container settings-scale1"
+            : "settings-menu-container"
+        }
+      >
+        <div id="settings-option-name" className="settings-option-container">
+          <div
+            className="settings-option"
+            onClick={(e) => {
+              e.currentTarget.parentElement.classList.add("settings-scale0");
+              document
+                .getElementById("settings-currencies")
+                .classList.remove("settings-scale0");
+            }}
+          >
+            Currency: {currency}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+              <path
+                fill="currentColor"
+                d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+              ></path>
+            </svg>
+          </div>
+          <div
+            className="settings-option"
+            onClick={(e) => {
+              e.currentTarget.parentElement.classList.add("settings-scale0");
+              document
+                .getElementById("settings-theme")
+                .classList.remove("settings-scale0");
+            }}
+          >
+            Theme: {theme}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+              <path
+                fill="currentColor"
+                d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+        <div
+          id="settings-currencies"
+          className="settings-option-container settings-scale0"
+        >
+          <div
+            className="settings-option"
+            onClick={() => {
+              setCurrency("USD");
+              setCurrencySymbol("$");
+              resetMenu();
+            }}
+          >
+            USD
+          </div>
+          <div
+            className="settings-option"
+            onClick={() => {
+              setCurrency("EUR");
+              setCurrencySymbol("€");
+              resetMenu();
+            }}
+          >
+            EUR
+          </div>
+          <div
+            className="settings-option"
+            onClick={() => {
+              setCurrency("BTC");
+              setCurrencySymbol("₿");
+              resetMenu();
+            }}
+          >
+            BTC
+          </div>
+          <div
+            className="settings-option"
+            onClick={() => {
+              setCurrency("ETH");
+              setCurrencySymbol("Ξ");
+              resetMenu();
+            }}
+          >
+            ETH
+          </div>
+        </div>
+        <div
+          id="settings-theme"
+          className="settings-option-container settings-scale0"
+        >
+          <div
+            className="settings-option"
+            onClick={() => {
+              setTheme("Light");
+              resetMenu();
+            }}
+          >
+            Light
+          </div>
+          <div
+            className="settings-option"
+            onClick={() => {
+              setTheme("Dark");
+              resetMenu();
+            }}
+          >
+            Dark
+          </div>
+        </div>
       </div>
     </div>
   );

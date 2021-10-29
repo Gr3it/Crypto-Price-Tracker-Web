@@ -1,0 +1,55 @@
+.crypto-row-container {
+  height: 5rem;
+  padding: 1rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 4rem 1fr 12rem 8rem 14rem 14rem;
+  min-width: 1200px;
+  background-color: var(--Grey);
+  justify-content: center;
+  align-content: center;
+  border-radius: 1.25rem;
+}
+
+.crypto-row-element {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--SecondColor);
+}
+
+.crypto-row-name {
+  gap: 1rem;
+}
+
+.crypto-row-symbol {
+  font-weight: 200;
+}
+
+.crypto-row-flex-end {
+  justify-content: flex-end;
+}
+
+.crypto-row-center {
+  justify-content: center;
+}
+
+.crypto-row-flex-start {
+  justify-content: flex-start;
+}
+
+.percentage-red {
+  color: var(--RedPercentage);
+}
+
+.percentage-green {
+  color: var(--GreenPercentage);
+}
+
+.crypto-row-image {
+  width: 2rem;
+  height: 2rem;
+}
