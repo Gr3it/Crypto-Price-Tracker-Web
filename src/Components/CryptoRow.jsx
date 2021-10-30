@@ -20,7 +20,9 @@ function CryptoRow({
       <div className="crypto-row-element crypto-row-flex-start crypto-row-name">
         <img src={image} alt={name + " image"} className="crypto-row-image " />
         <div>{name}</div>
-        <div className="crypto-row-symbol">{symbol}</div>
+      </div>
+      <div className="crypto-row-element crypto-row-flex-start crypto-row-symbol">
+        {symbol}
       </div>
       <div className="crypto-row-element crypto-row-flex-end">
         {currency_symbol + " " + current_price}

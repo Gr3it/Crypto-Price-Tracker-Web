@@ -3,9 +3,9 @@
   padding: 1rem;
   width: 100%;
   display: grid;
-  grid-template-columns: 4rem 1fr 12rem 8rem 14rem 14rem;
+  grid-template-columns: 4rem 1fr 3rem 12rem 8rem 14rem 14rem;
   min-width: 1200px;
-  background-color: var(--Grey);
+  background-color: var(--ContainerColor);
   justify-content: center;
   align-content: center;
   border-radius: 1.25rem;
@@ -27,6 +27,7 @@
 
 .crypto-row-symbol {
   font-weight: 200;
+  margin-left: auto;
 }
 
 .crypto-row-flex-end {

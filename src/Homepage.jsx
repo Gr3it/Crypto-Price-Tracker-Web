@@ -10,26 +10,25 @@ function Homepage({ currencySymbol, currency = "" }) {
   const [inputText, setInputText] = useState("");
   const CoinGeckoClient = new CoinGecko();
 
-  const updateData = async () => {
-    CoinGeckoClient.coins
-      .markets({
-        vs_currency: currency.toLowerCase(),
-        order: "market_cap_desc",
-        per_page: 100,
-        page: 1,
-        sparkline: false,
-        price_change_percentage: "24h",
-      })
-      .then((data) => {
-        setCoins(data.data);
-        console.log(data.data);
-      })
-      .catch((error) => console.log(error));
-  };
-
   useEffect(() => {
+    const updateData = async () => {
+      CoinGeckoClient.coins
+        .markets({
+          vs_currency: currency.toLowerCase(),
+          order: "market_cap_desc",
+          per_page: 100,
+          page: 1,
+          sparkline: false,
+          price_change_percentage: "24h",
+        })
+        .then((data) => {
+          setCoins(data.data);
+        })
+        .catch((error) => console.log(error));
+    };
+
     updateData();
-  }, []);
+  }, [currency]);
 
   const handleSearchChange = (e) => {
     setInputText(e.target.value);
@@ -38,8 +37,6 @@ function Homepage({ currencySymbol, currency = "" }) {
   const filteredCoins = coins.filter((coins) =>
     coins.name.toLowerCase().includes(inputText.toLowerCase())
   );
-
-  console.log(coins);
 
   return (
     <div className="container homepage">
