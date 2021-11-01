@@ -7,10 +7,12 @@ import "./CSS/Homepage.css";
 
 function Homepage({ currencySymbol, currency = "" }) {
   const [coins, setCoins] = useState([]);
+  /*   const [lastPage, setLastPage] = useState(1); */
   const [inputText, setInputText] = useState("");
   const CoinGeckoClient = new CoinGecko();
 
   const updateData = async () => {
+    /* for (let i = 1; i <= lastPage; i++) */
     CoinGeckoClient.coins
       .markets({
         vs_currency: currency.toLowerCase(),
@@ -22,6 +24,8 @@ function Homepage({ currencySymbol, currency = "" }) {
       })
       .then((data) => {
         setCoins(data.data);
+        console.log(data);
+        console.log([data.data]);
       })
       .catch((error) => console.log(error));
   };
