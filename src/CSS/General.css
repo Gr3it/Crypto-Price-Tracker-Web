@@ -38,7 +38,7 @@ body {
   width: 100vw;
   padding-right: 10vw;
   padding-left: 10vw;
-  max-width: 1600px;
+  max-width: calc(1600px + 20vw);
 }
 
 .dark-theme {

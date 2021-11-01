@@ -10,25 +10,34 @@ function Homepage({ currencySymbol, currency = "" }) {
   const [inputText, setInputText] = useState("");
   const CoinGeckoClient = new CoinGecko();
 
-  useEffect(() => {
-    const updateData = async () => {
-      CoinGeckoClient.coins
-        .markets({
-          vs_currency: currency.toLowerCase(),
-          order: "market_cap_desc",
-          per_page: 100,
-          page: 1,
-          sparkline: false,
-          price_change_percentage: "24h",
-        })
-        .then((data) => {
-          setCoins(data.data);
-        })
-        .catch((error) => console.log(error));
-    };
+  const updateData = async () => {
+    CoinGeckoClient.coins
+      .markets({
+        vs_currency: currency.toLowerCase(),
+        order: "market_cap_desc",
+        per_page: 100,
+        page: 1,
+        sparkline: false,
+        price_change_percentage: "24h",
+      })
+      .then((data) => {
+        setCoins(data.data);
+      })
+      .catch((error) => console.log(error));
+  };
 
+  useEffect(() => {
+    const call = setInterval(updateData, 60000);
+    return () => clearInterval(call);
+  }, []);
+
+  useEffect(() => {
     updateData();
   }, [currency]);
+
+  useEffect(() => {
+    console.log("api call");
+  }, [coins]);
 
   const handleSearchChange = (e) => {
     setInputText(e.target.value);
@@ -50,7 +59,7 @@ function Homepage({ currencySymbol, currency = "" }) {
       <div className="homepage-overflow">
         <div className="homepage-table-header">
           <div className="homepage-grid-element">Rank</div>
-          <div className="homepage-grid-element">Crypto</div>
+          <div className="homepage-grid-element span-2">Crypto</div>
           <div className="homepage-grid-element">Price</div>
           <div className="homepage-grid-element">24h</div>
           <div className="homepage-grid-element">volume 24h</div>
