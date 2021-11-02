@@ -7,27 +7,28 @@ import "./CSS/Homepage.css";
 
 function Homepage({ currencySymbol, currency = "" }) {
   const [coins, setCoins] = useState([]);
-  /*   const [lastPage, setLastPage] = useState(1); */
+  const [lastPage, setLastPage] = useState(2);
   const [inputText, setInputText] = useState("");
   const CoinGeckoClient = new CoinGecko();
 
   const updateData = async () => {
-    /* for (let i = 1; i <= lastPage; i++) */
-    CoinGeckoClient.coins
-      .markets({
-        vs_currency: currency.toLowerCase(),
-        order: "market_cap_desc",
-        per_page: 100,
-        page: 1,
-        sparkline: false,
-        price_change_percentage: "24h",
-      })
-      .then((data) => {
-        setCoins(data.data);
-        console.log(data);
-        console.log([data.data]);
-      })
-      .catch((error) => console.log(error));
+    let temp = [...coins];
+    for (let i = 1; i <= lastPage; i++) {
+      CoinGeckoClient.coins
+        .markets({
+          vs_currency: currency.toLowerCase(),
+          order: "market_cap_desc",
+          per_page: 100,
+          page: i,
+          sparkline: false,
+          price_change_percentage: "24h",
+        })
+        .then((data) => {
+          temp.splice((i - 1) * 100, 100, ...data.data);
+        })
+        .catch((error) => console.log(error));
+    }
+    setCoins(temp);
   };
 
   useEffect(() => {
@@ -40,7 +41,7 @@ function Homepage({ currencySymbol, currency = "" }) {
   }, [currency]);
 
   useEffect(() => {
-    console.log("api call");
+    console.log(coins);
   }, [coins]);
 
   const handleSearchChange = (e) => {
