@@ -60,3 +60,10 @@
 .span-2 {
   grid-column: span 2;
 }
+
+.homepage-loading {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--MainColor);
+}
