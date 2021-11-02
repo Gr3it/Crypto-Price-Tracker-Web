@@ -12,7 +12,7 @@ function Homepage({ currencySymbol, currency = "" }) {
   const CoinGeckoClient = new CoinGecko();
 
   const updateData = async () => {
-    let temp = [...coins];
+    let temp = new Array(lastPage * 100);
     for (let i = 1; i <= lastPage; i++) {
       CoinGeckoClient.coins
         .markets({
@@ -25,10 +25,10 @@ function Homepage({ currencySymbol, currency = "" }) {
         })
         .then((data) => {
           temp.splice((i - 1) * 100, 100, ...data.data);
+          setCoins(temp);
         })
         .catch((error) => console.log(error));
     }
-    setCoins(temp);
   };
 
   useEffect(() => {
