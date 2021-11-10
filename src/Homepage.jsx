@@ -45,7 +45,6 @@ function Homepage({ currencySymbol, currency = "" }) {
   const filteredCoins = coins.filter((coins) =>
     coins.name.toLowerCase().includes(inputText.toLowerCase())
   );
-
   return (
     <div className="container homepage">
       <RefreshList setPageNumber={(value) => setPageNumber(value)} />
@@ -71,7 +70,7 @@ function Homepage({ currencySymbol, currency = "" }) {
             return (
               <CryptoRow
                 inner_ref={lastCoinsRef}
-                key={element.id}
+                key={element.id + String(Math.random())}
                 id={element.id}
                 symbol={element.symbol}
                 name={element.name}

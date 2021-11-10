@@ -1,0 +1,205 @@
+.crypto-page-container {
+  min-height: 100vh;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.crypto-page-title {
+  text-align: center;
+  color: var(--MainColor);
+  font-size: 5.5rem;
+  font-weight: 700;
+}
+
+.crypto-page-main-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 15rem;
+  height: 30%;
+  min-height: 10rem;
+}
+
+.crypto-page-main-content-loading {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15rem;
+  height: 30%;
+  min-height: 10rem;
+  font-size: 2rem;
+  color: var(--MainColor);
+}
+
+.crypto-page-left-column {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.crypto-page-right-column {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.crypto-page-data-field {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--ContainerColor);
+}
+
+.crypto-page-data-field-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--MainColor);
+}
+
+.crypto-page-data-field-number {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--SecondColor);
+}
+
+.crypto-page-path {
+  color: var(--SecondColor);
+  font-size: 1.25rem;
+  font-weight: 200;
+}
+
+.crypto-page-path-link {
+  color: var(--SecondColor);
+  text-decoration: none;
+}
+
+.crypto-page-path-highlight {
+  color: var(--MainColor);
+  font-weight: 400;
+}
+
+.crypto-page-content {
+  height: 100%;
+  width: 100%;
+}
+
+.crypto-page-name {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--MainColor);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.crypto-page-name > * > span {
+  font-weight: 200;
+}
+
+.crypto-page-rank {
+  background-color: var(--ContainerColor);
+  border-radius: 0.625rem;
+  padding: 0.5rem 1rem;
+  color: var(--SecondColor);
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-right: 1rem;
+}
+
+.crypto-page-price {
+  color: var(--MainColor);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.crypto-page-price {
+  display: flex;
+  gap: 2rem;
+}
+
+.crypto-page-price-number {
+  color: var(--SecondColor);
+  font-weight: 400;
+}
+
+.crypto-page-price-percentage {
+  font-size: 1rem;
+  font-weight: 400;
+  transform: translate(-1.5rem, 10%);
+}
+
+.crypto-page-converter-svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--MainColor);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.crypto-page-converter-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.crypto-page-converter-box {
+  width: 15rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 0.625rem;
+  overflow: hidden;
+  font-size: 1rem;
+  font-weight: 200;
+  color: var(--SecondColor);
+  box-shadow: 0 0 5px 0 var(--ShadowColor);
+}
+
+.crypto-page-converter-currency {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.5rem;
+  width: 4rem;
+  background-color: var(--ContainerColor);
+}
+
+.crypto-page-converter-input {
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: right;
+  width: 11rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  border: none;
+}
+.crypto-page-converter-input:focus {
+  outline: none;
+}
+
+#chartdiv {
+  width: 100%;
+  height: 70%;
+}

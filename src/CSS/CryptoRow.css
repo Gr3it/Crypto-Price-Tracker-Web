@@ -9,6 +9,7 @@
   justify-content: space-between;
   align-content: center;
   border-radius: 1.25rem;
+  cursor: pointer;
 }
 
 .crypto-row-element {
@@ -42,14 +43,6 @@
   justify-content: flex-start;
 }
 
-.percentage-red {
-  color: var(--RedPercentage);
-}
-
-.percentage-green {
-  color: var(--GreenPercentage);
-}
-
 .crypto-row-image {
   width: 2rem;
   height: 2rem;
@@ -57,4 +50,8 @@
 
 .crypto-row-container:last-child {
   margin-bottom: 1rem;
+}
+
+.crypto-row-link {
+  text-decoration: none;
 }

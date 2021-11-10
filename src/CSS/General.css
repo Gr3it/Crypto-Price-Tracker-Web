@@ -2,6 +2,7 @@
   --Black: #000000;
   --Black50: #00000080;
   --Grey: #313331;
+  --Shadow: #0004;
 
   --White: #ffffff;
 
@@ -46,6 +47,7 @@ body {
   --MainColor: var(--Accent);
   --SecondColor: var(--White);
   --ContainerColor: var(--Grey);
+  --ShadowColor: #0000;
 }
 
 .light-theme {
@@ -53,4 +55,13 @@ body {
   --MainColor: var(--Black);
   --SecondColor: var(--Black);
   --ContainerColor: var(--LightAccent);
+  --ShadowColor: var(--Shadow);
+}
+
+.percentage-red {
+  color: var(--RedPercentage);
+}
+
+.percentage-green {
+  color: var(--GreenPercentage);
 }

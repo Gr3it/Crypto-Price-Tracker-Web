@@ -4,9 +4,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ScrollToTop from "./Components/scrollToTop";
 import Homepage from "./Homepage";
 import Page_Not_Found from "./Page_Not_Found";
+import Settings from "./Components/Settings";
+import CryptoPage from "./Components/CryptoPage";
 
 import "./CSS/General.css";
-import Settings from "./Components/Settings";
 
 function App() {
   const [currency, setCurrency] = useState("USD");
@@ -40,6 +41,18 @@ function App() {
           exact
           render={() => (
             <Homepage currencySymbol={currencySymbol} currency={currency} />
+          )}
+        />
+        <Route
+          path="/crypto/:id"
+          exact
+          render={(props) => (
+            <CryptoPage
+              currency={currency}
+              currencySymbol={currencySymbol}
+              theme={theme}
+              {...props}
+            />
           )}
         />
         <Route path="/" component={Page_Not_Found} />
