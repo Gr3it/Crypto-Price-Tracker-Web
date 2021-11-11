@@ -27,7 +27,7 @@ function CryptoPage({ match, currency, currencySymbol, theme }) {
     let root = am5.Root.new("chartdiv");
 
     root.setThemes([am5themes_Animated.new(root)]);
-    if (theme == "Dark") {
+    if (theme === "Dark") {
       root.setThemes([am5themes_Dark.new(root)]);
     }
 
@@ -251,7 +251,7 @@ function CryptoPage({ match, currency, currencySymbol, theme }) {
                           data.market_data.current_price[currency.toLowerCase()]
                         ).toFixed(4)
                       );
-                      if (e.target.value == "") setInputCurrency("");
+                      if (e.target.value === "") setInputCurrency("");
                     }}
                     type="number"
                     className="crypto-page-converter-input"
@@ -282,7 +282,7 @@ function CryptoPage({ match, currency, currencySymbol, theme }) {
                           data.market_data.current_price[currency.toLowerCase()]
                         ).toFixed(4)
                       );
-                      if (e.target.value == "") setInputCrypto("");
+                      if (e.target.value === "") setInputCrypto("");
                     }}
                     type="number"
                     className="crypto-page-converter-input"
