@@ -179,7 +179,12 @@ function CryptoPage({ match, currency, currencySymbol, theme }) {
 
   return (
     <div className="crypto-page-container container">
-      <h1 className="crypto-page-title">Crypto Price Tracker</h1>
+      <div className="crypto-page-header">
+        <Link to="/" className="crypto-page-back">
+          &lt; Back
+        </Link>
+        <h1 className="crypto-page-title">Crypto Price Tracker</h1>
+      </div>
 
       <div className="crypto-page-content">
         {loaded ? (
