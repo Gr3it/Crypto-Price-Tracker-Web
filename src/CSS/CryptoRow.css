@@ -4,7 +4,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: 4rem minmax(14rem, 20rem) minmax(6rem, 8rem) 11rem 8rem 14rem 14rem;
-  min-width: 1200px;
+  min-width: 75rem;
   background-color: var(--ContainerColor);
   justify-content: space-between;
   align-content: center;

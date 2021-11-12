@@ -46,7 +46,7 @@
   grid-template-columns: 4rem minmax(14rem, 20rem) minmax(6rem, 8rem) 11rem 8rem 14rem 14rem;
   justify-content: space-between;
   align-content: center;
-  min-width: 1200px;
+  min-width: 75rem;
 }
 
 .homepage-overflow {
