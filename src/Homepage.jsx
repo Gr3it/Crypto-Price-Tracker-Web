@@ -51,7 +51,7 @@ function Homepage({ currencySymbol, currency = "" }) {
       <h1 className="homepage-title">Crypto Price Tracker</h1>
       <input
         className="homepage-search"
-        type="search"
+        type="text"
         placeholder="Search"
         onChange={(e) => handleSearchChange(e)}
       ></input>
