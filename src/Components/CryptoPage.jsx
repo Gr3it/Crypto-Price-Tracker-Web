@@ -159,7 +159,14 @@ function CryptoPage({ match, currency, currencySymbol, theme }) {
     return () => {
       chart.dispose();
     };
-  }, [loadedChart, theme, currencySymbol, chart30d, chartMaxSelector]);
+  }, [
+    loadedChart,
+    theme,
+    currencySymbol,
+    chart30d,
+    chartMax,
+    chartMaxSelector,
+  ]);
 
   useEffect(() => {
     CoinGeckoClient.coins
