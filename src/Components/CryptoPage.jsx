@@ -12,12 +12,15 @@ import "../CSS/CryptoPage.css";
 
 function CryptoPage({ match, currency, currencySymbol, theme }) {
   const [data, setData] = useState([]);
-  const [error, setError] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const [loadedChart, setLoadedChart] = useState(false);
   const [inputCurrency, setInputCurrency] = useState("");
   const [inputCrypto, setInputCrypto] = useState("");
+
+  const [loadedChart, setLoadedChart] = useState(false);
   const [chart30d, setChart30d] = useState([]);
+  const [chartMax, setChartMax] = useState([]);
+
+  const [chartMaxSelector, setChartMaxSelector] = useState(true);
 
   const CoinGeckoClient = new CoinGecko();
 
@@ -34,15 +37,28 @@ function CryptoPage({ match, currency, currencySymbol, theme }) {
     function generateChartData() {
       let chartData = [];
 
-      for (var i = 0; i < chart30d.length; i++) {
-        chartData.push({
-          date: chart30d[i][0],
-          value: chart30d[i][4],
-          open: chart30d[i][1],
-          low: chart30d[i][3],
-          high: chart30d[i][2],
-        });
+      if (chartMaxSelector) {
+        for (var i = 0; i < chart30d.length; i++) {
+          chartData.push({
+            date: chart30d[i][0],
+            value: chart30d[i][4],
+            open: chart30d[i][1],
+            low: chart30d[i][3],
+            high: chart30d[i][2],
+          });
+        }
+      } else {
+        for (var i = 0; i < chartMax.length; i++) {
+          chartData.push({
+            date: chartMax[i][0],
+            value: chartMax[i][4],
+            open: chartMax[i][1],
+            low: chartMax[i][3],
+            high: chartMax[i][2],
+          });
+        }
       }
+
       return chartData;
     }
 
@@ -66,6 +82,8 @@ function CryptoPage({ match, currency, currencySymbol, theme }) {
           { timeUnit: "hour", count: 8 },
           { timeUnit: "hour", count: 12 },
           { timeUnit: "day", count: 1 },
+          { timeUnit: "week", count: 1 },
+          { timeUnit: "month", count: 1 },
         ],
         groupCount: 100,
         baseInterval: { timeUnit: "hour", count: 4 },
@@ -141,7 +159,7 @@ function CryptoPage({ match, currency, currencySymbol, theme }) {
     return () => {
       chart.dispose();
     };
-  }, [loadedChart, theme, currencySymbol, chart30d]);
+  }, [loadedChart, theme, currencySymbol, chart30d, chartMaxSelector]);
 
   useEffect(() => {
     CoinGeckoClient.coins
@@ -157,7 +175,7 @@ function CryptoPage({ match, currency, currencySymbol, theme }) {
         setLoaded(true);
       })
       .catch((error) => {
-        setError(true);
+        console.log(error);
       });
   }, []);
 
@@ -173,7 +191,22 @@ function CryptoPage({ match, currency, currencySymbol, theme }) {
         setLoadedChart(true);
       })
       .catch((error) => {
-        setError(true);
+        console.log(error);
+      });
+  }, [currency]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.coingecko.com/api/v3/coins/${
+          match.params.id
+        }/ohlc?vs_currency=${currency.toLowerCase()}&days=max`
+      )
+      .then((data) => {
+        setChartMax(data.data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }, [currency]);
 
@@ -344,7 +377,30 @@ function CryptoPage({ match, currency, currencySymbol, theme }) {
             Loading data...
           </div>
         )}
-        {loadedChart && <div id="chartdiv"></div>}
+        {loadedChart && (
+          <div id="chartdiv">
+            <div className="crypto-page-buttons">
+              <div
+                onClick={() => setChartMaxSelector(true)}
+                className={
+                  "crypto-page-button " +
+                  (!chartMaxSelector && "crypto-page-deselect")
+                }
+              >
+                30 Days
+              </div>
+              <div
+                onClick={() => setChartMaxSelector(false)}
+                className={
+                  "crypto-page-button " +
+                  (chartMaxSelector && "crypto-page-deselect")
+                }
+              >
+                Max
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
